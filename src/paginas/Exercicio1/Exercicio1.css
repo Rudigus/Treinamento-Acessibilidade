@@ -1,5 +1,6 @@
 .pagina-exercicio-1 {
-    max-width: 980px;
+    width: 100%;
+    max-width: none;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -20,12 +21,27 @@
     width: 100%;
 }
 
+.pagina-exercicio-1 .filtros-rapidos {
+    margin-bottom: 0.75rem;
+}
+
+.pagina-exercicio-1 .filtros-rapidos input {
+    width: 100%;
+    border: 1px solid #c8d0db;
+    border-radius: 8px;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.95rem;
+}
+
 .pagina-exercicio-1 .titulo-secao {
     margin: 0 0 0.6rem;
     font-size: 1rem;
+    font-weight: 700;
+    color: #000000;
 }
 
 .pagina-exercicio-1 .lista-registros {
+    width: 100%;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -49,6 +65,10 @@
     line-height: 1.5;
 }
 
+.pagina-exercicio-1 .card-registro .texto-secundario {
+    color: #b1b7c1;
+}
+
 .pagina-exercicio-1 .card-registro__nome {
     margin: 0 0 0.2rem;
     font-size: 1.05rem;
@@ -64,6 +84,11 @@
     background: transparent;
     color: inherit;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 42px;
+    min-height: 38px;
 }
 
 .pagina-exercicio-1 .card-registro.esta-selecionado {
@@ -86,6 +111,10 @@ body[data-theme='dark'] .pagina-exercicio-1 .botao-detalhar {
 
 body[data-theme='dark'] .pagina-exercicio-1 .card-registro {
     background: #000000;
+}
+
+body[data-theme='dark'] .pagina-exercicio-1 .card-registro .texto-secundario {
+    color: #626874;
 }
 
 body[data-theme='dark'] .pagina-exercicio-1 .card-registro.esta-selecionado,

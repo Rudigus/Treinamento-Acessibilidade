@@ -1,43 +1,52 @@
 import { useState } from 'react'
 import './Exercicio1.css'
-import { REGISTROS_MOCK } from './mock/registrosMock.js'
+import { ITENS_DOWNLOAD_MOCK } from './mock/registrosMock.js'
 
 function Exercicio1() {
   const [idSelecionado, setIdSelecionado] = useState(null)
 
   return (
     <section className="pagina-exercicio-1" aria-labelledby="titulo-exercicio-1">
-      <h2 id="titulo-exercicio-1">Atualização de dados cadastrais</h2>
+      <h2 id="titulo-exercicio-1">Central de downloads de documentos</h2>
       <span className="subtitulo-pagina">
-        É o serviço para consultar e atualizar dados cadastrais. Escolha um
-        registro na lista para ver mais detalhes e editar as informações.
+        É o serviço para consultar e baixar documentos disponíveis no sistema.
+        Escolha um item na lista para iniciar o download.
       </span>
 
       <div className="painel-crud">
-        <section aria-label="Lista de registros">
-          <h3 className="titulo-secao">Registros</h3>
+        <div className="filtros-rapidos">
+          <input type="text" placeholder="Buscar por nome, tipo ou formato" />
+        </div>
+
+        <section aria-label="Lista de itens para download">
+          <h4 className="titulo-secao">Itens disponíveis</h4>
           <ul className="lista-registros">
-            {REGISTROS_MOCK.map((registro) => {
-              const estaSelecionado = registro.id === idSelecionado
+            {ITENS_DOWNLOAD_MOCK.map((item) => {
+              const estaSelecionado = item.id === idSelecionado
 
               return (
-                <li key={registro.id}>
-                  <article className={`card-registro${estaSelecionado ? ' esta-selecionado' : ''}`}>
-                    <h4 className="card-registro__nome">{registro.nome}</h4>
-                    <p>
-                      <strong>CPF:</strong> {registro.cpf}
+                <li key={item.id}>
+                  <article
+                    id="card-registro"
+                    className={`card-registro${estaSelecionado ? ' esta-selecionado' : ''}`}
+                  >
+                    <h4 className="card-registro__nome">{item.nome}</h4>
+                    <p className="texto-secundario">
+                      <strong>Tipo:</strong> {item.tipo}
                     </p>
-                    <p>
-                      <strong>Email:</strong> {registro.email}
+                    <p className="texto-secundario">
+                      <strong>Formato:</strong> {item.formato} ({item.tamanho})
                     </p>
-                    <button
-                      type="button"
+                    <div
+                      role="button"
+                      tabIndex={0}
+                      aria-hidden="true"
                       className="botao-detalhar"
                       aria-pressed={estaSelecionado}
-                      onClick={() => setIdSelecionado(registro.id)}
+                      onClick={() => setIdSelecionado(item.id)}
                     >
-                      Detalhar
-                    </button>
+                      <i className="fas fa-download" aria-hidden="true" />
+                    </div>
                   </article>
                 </li>
               )
