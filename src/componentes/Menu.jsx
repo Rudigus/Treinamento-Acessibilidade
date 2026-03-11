@@ -6,8 +6,10 @@ function Menu({ paginas, idPaginaAtiva, aoNavegar }) {
   const estaEmAltoContraste = theme === 'dark'
 
   return (
-    <aside className="menu">
-      <h1 className="menu__titulo">Treinamento de Acessibilidade</h1>
+    <aside className="menu" aria-labelledby="menu-titulo">
+      <h1 id="menu-titulo" className="menu__titulo">
+        Treinamento de Acessibilidade
+      </h1>
       <p className="menu__subtitulo">Selecione uma pagina para comecar.</p>
       <div
         className="menu__controle-contraste"

@@ -14,7 +14,7 @@
 }
 
 body[data-theme='dark'] {
-  --cor-fundo: #0f1722;
-  --cor-fundo-gradiente-topo: #1b2f4e;
-  --cor-fundo-gradiente-base: #1a3b34;
+  --cor-fundo: #333333;
+  --cor-fundo-gradiente-topo: #333333;
+  --cor-fundo-gradiente-base: #333333;
 }

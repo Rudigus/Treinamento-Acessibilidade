@@ -2,6 +2,7 @@
   background: var(--cor-menu-fundo);
   color: var(--cor-menu-texto);
   padding: 2rem 1.25rem;
+  border-right: 1px solid transparent;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
@@ -110,6 +111,7 @@
 body[data-theme='dark'] .menu {
   background: #1b1b1b;
   color: #f7f9ff;
+  border-right-color: #ffffff;
 }
 
 body[data-theme='dark'] .menu__subtitulo {
