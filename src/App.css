@@ -1,0 +1,15 @@
+.estrutura-aplicacao {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+}
+
+.conteudo-principal {
+  padding: clamp(1rem, 2vw + 0.7rem, 2.5rem);
+}
+
+@media (max-width: 900px) {
+  .estrutura-aplicacao {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,28 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--fonte-base);
+  line-height: 1.5;
+  color: var(--cor-texto);
+  background:
+    radial-gradient(circle at top right, #d5e4ff 0%, transparent 45%),
+    radial-gradient(circle at bottom left, #d9f1ea 0%, transparent 38%),
+    var(--cor-fundo);
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}

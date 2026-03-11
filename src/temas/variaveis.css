@@ -1,0 +1,11 @@
+:root {
+  --fonte-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  --cor-fundo: #f3f6fb;
+  --cor-superficie: #ffffff;
+  --cor-texto: #1d2533;
+  --cor-menu-fundo: #102542;
+  --cor-menu-texto: #f4f7ff;
+  --cor-menu-suave: #c7d3ea;
+  --cor-primaria: #0c66d8;
+}

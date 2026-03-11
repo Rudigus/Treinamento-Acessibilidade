@@ -1,0 +1,12 @@
+.pagina-exercicio-3 {
+  max-width: 840px;
+  background: var(--cor-superficie);
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(16, 37, 66, 0.14);
+  padding: clamp(1.25rem, 2vw + 0.6rem, 2rem);
+}
+
+.pagina-exercicio-3 h2 {
+  margin: 0;
+  font-size: clamp(1.3rem, 2.2vw, 2rem);
+}
