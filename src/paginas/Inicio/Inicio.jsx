@@ -20,6 +20,44 @@ function Inicio() {
           código durante os exercícios.
         </p>
       </div>
+
+      <section className="links-ajuda" aria-labelledby="titulo-links-ajuda">
+        <h3 id="titulo-links-ajuda">Links de ajuda</h3>
+        <ul>
+          <li>
+            <a
+              href="https://fontawesome.com/v5/search"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              Font Awesome v5 Search
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://guia-wcag.com/"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              Guia WCAG
+            </a>
+          </li>
+          <li>
+            <a href="https://www.gov.br/ds/home" target="_blank" rel="noreferrer noopener">
+              DS Gov
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://chromewebstore.google.com/detail/ibm-equal-access-accessib/lkcagbfjnkomcinoddgooolagloogehp?hl=pt&pli=1"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              IBM Equal Access Accessibility Checker
+            </a>
+          </li>
+        </ul>
+      </section>
     </section>
   )
 }

@@ -22,6 +22,29 @@
   color: inherit;
 }
 
+.pagina-inicio .links-ajuda {
+  margin-top: 0.5rem;
+}
+
+.pagina-inicio .links-ajuda h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.pagina-inicio .links-ajuda ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.pagina-inicio .links-ajuda a {
+  color: #1351b4;
+  text-underline-offset: 3px;
+}
+
 body[data-theme='dark'] .pagina-inicio {
   color: #e7edf6;
+}
+
+body[data-theme='dark'] .pagina-inicio .links-ajuda a {
+  color: #fff333;
 }
