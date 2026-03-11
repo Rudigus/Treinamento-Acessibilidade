@@ -14,11 +14,19 @@ body,
 body {
   font-family: var(--fonte-base);
   line-height: 1.5;
-  color: var(--cor-texto);
   background:
-    radial-gradient(circle at top right, #d5e4ff 0%, transparent 45%),
-    radial-gradient(circle at bottom left, #d9f1ea 0%, transparent 38%),
+    radial-gradient(
+      circle at top right,
+      var(--cor-fundo-gradiente-topo) 0%,
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      var(--cor-fundo-gradiente-base) 0%,
+      transparent 38%
+    ),
     var(--cor-fundo);
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 h1,

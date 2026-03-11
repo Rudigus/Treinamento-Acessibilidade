@@ -1,12 +1,21 @@
 .pagina-exercicio-2 {
   max-width: 840px;
-  background: var(--cor-superficie);
-  border-radius: 18px;
-  box-shadow: 0 12px 28px rgba(16, 37, 66, 0.14);
-  padding: clamp(1.25rem, 2vw + 0.6rem, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  color: #333333;
 }
 
 .pagina-exercicio-2 h2 {
   margin: 0;
   font-size: clamp(1.3rem, 2.2vw, 2rem);
+}
+
+.pagina-exercicio-2 .subtitulo-pagina {
+  font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+  color: inherit;
+}
+
+body[data-theme='dark'] .pagina-exercicio-2 {
+  color: #e7edf6;
 }

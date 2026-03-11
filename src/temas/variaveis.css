@@ -1,11 +1,20 @@
 :root {
-  --fonte-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --fonte-base: 'Rawline', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
   --cor-fundo: #f3f6fb;
-  --cor-superficie: #ffffff;
-  --cor-texto: #1d2533;
   --cor-menu-fundo: #102542;
   --cor-menu-texto: #f4f7ff;
   --cor-menu-suave: #c7d3ea;
   --cor-primaria: #0c66d8;
+  --cor-foco: #ffffff;
+  --cor-menu-botao: rgba(255, 255, 255, 0.08);
+  --cor-menu-botao-hover: rgba(255, 255, 255, 0.2);
+  --cor-fundo-gradiente-topo: #d5e4ff;
+  --cor-fundo-gradiente-base: #d9f1ea;
+}
+
+body[data-theme='dark'] {
+  --cor-fundo: #0f1722;
+  --cor-fundo-gradiente-topo: #1b2f4e;
+  --cor-fundo-gradiente-base: #1a3b34;
 }

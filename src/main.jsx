@@ -4,9 +4,12 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 import './temas/variaveis.css'
 import './temas/globais.css'
 import App from './App.jsx'
+import { ThemeProvider } from './contextos/ThemeContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
   </StrictMode>,
 )
