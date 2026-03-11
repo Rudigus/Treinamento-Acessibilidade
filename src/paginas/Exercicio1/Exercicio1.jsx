@@ -45,8 +45,6 @@ function Exercicio1() {
                     </p>
                     <div
                       role="button"
-                      tabIndex={0}
-                      aria-hidden="true"
                       className="botao-detalhar"
                       aria-pressed={estaSelecionado}
                       onClick={() => setIdSelecionado(item.id)}
