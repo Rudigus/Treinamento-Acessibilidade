@@ -1,9 +1,15 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './Exercicio1.css'
-import { ITENS_DOWNLOAD_MOCK } from './mock/registrosMock.js'
+ import { ITENS_DOWNLOAD_MOCK } from './mock/registrosMock.js'
+import BrButton from '../../dsgov/BrButton.jsx'
 
 function Exercicio1() {
+  const navigate = useNavigate()
   const [idSelecionado, setIdSelecionado] = useState(null)
+  const voltarParaInicio = () => {
+    navigate('/')
+  }
 
   return (
     <section className="pagina-exercicio-1" aria-labelledby="titulo-exercicio-1">
@@ -53,6 +59,12 @@ function Exercicio1() {
             })}
           </ul>
         </section>
+      </div>
+
+      <div className="acoes-finais">
+        <BrButton className="primary medium" onClick={voltarParaInicio}>
+          Voltar
+        </BrButton>
       </div>
     </section>
   )

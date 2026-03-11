@@ -1,7 +1,8 @@
 import './Menu.css'
+import { NavLink } from 'react-router-dom'
 import { useTheme } from '../contextos/ThemeContext.jsx'
 
-function Menu({ paginas, idPaginaAtiva, aoNavegar }) {
+function Menu({ paginas }) {
   const { theme, setTheme } = useTheme()
   const estaEmAltoContraste = theme === 'dark'
 
@@ -47,23 +48,48 @@ function Menu({ paginas, idPaginaAtiva, aoNavegar }) {
         </div>
       </div>
 
+      <div
+        className="menu__controle-fonte"
+        role="group"
+        aria-label="Controle de tamanho da fonte"
+      >
+        <p className="menu__titulo-fonte">
+          <i className="fas fa-font" aria-hidden="true" />
+          <span>Tamanho de Fonte</span>
+        </p>
+
+        <div className="menu__opcoes-fonte">
+          <button type="button" className="menu__botao-fonte" aria-pressed="false">
+            Pequena
+          </button>
+          <button
+            type="button"
+            className="menu__botao-fonte esta-selecionado"
+            aria-pressed="true"
+          >
+            Média
+          </button>
+          <button type="button" className="menu__botao-fonte" aria-pressed="false">
+            Grande
+          </button>
+        </div>
+      </div>
+
       <nav aria-label="Menu de navegacao principal">
         <ul className="menu__lista">
           {paginas.map((pagina) => {
-            const estaAtiva = pagina.id === idPaginaAtiva
-
             return (
-              <li key={pagina.id}>
-                <button
-                  type="button"
-                  className={`menu__botao-navegacao${
-                    estaAtiva ? ' esta-ativo' : ''
-                  }`}
-                  aria-current={estaAtiva ? 'page' : undefined}
-                  onClick={() => aoNavegar(pagina.id)}
+              <li key={pagina.caminho}>
+                <NavLink
+                  to={pagina.caminho}
+                  end={pagina.caminho === '/'}
+                  className={({ isActive }) =>
+                    `menu__botao-navegacao${isActive ? ' esta-ativo' : ''}`
+                  }
+                  aria-label={pagina.titulo}
                 >
                   {pagina.titulo}
-                </button>
+                </NavLink>
               </li>
             )
           })}

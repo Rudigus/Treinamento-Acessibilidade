@@ -1,0 +1,26 @@
+Ajustes pendentes - Exercicio 1
+
+1. Campo de busca:
+- Adicionar label visivel associado ao input (evitar apenas placeholder).
+
+2. Hierarquia de titulos:
+- Trocar o titulo "Itens disponiveis" de h4 para h3.
+
+3. IDs duplicados:
+- Remover/revisar id="card-registro" repetido em todos os cards.
+
+4. Controle de download:
+- Substituir div role="button" por elemento button nativo.
+- Remover aria-hidden do controle interativo.
+- Garantir nome acessivel do botao (texto ou aria-label).
+- Garantir acionamento correto por teclado (Enter e Space).
+
+5. Contraste:
+- Ajustar contraste do texto secundario dos cards para atender WCAG.
+
+6. Padrao visual de tipografia:
+- Alterar "Itens disponiveis" de bold para semibold.
+- Remover cor preta fixa do titulo de secao e usar cor padrao do tema.
+
+7. Revisao final:
+- Rodar auditoria de acessibilidade e corrigir todos os erros/alertas restantes.

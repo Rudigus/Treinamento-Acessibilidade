@@ -100,6 +100,12 @@
     font-weight: 700;
 }
 
+.pagina-exercicio-1 .acoes-finais {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+}
+
 body[data-theme='dark'] .pagina-exercicio-1 {
     color: #e7edf6;
 }
