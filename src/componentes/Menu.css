@@ -37,6 +37,12 @@
   transition: background-color 0.2s ease;
 }
 
+.menu__rotulo-botao {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
 .menu__botao-navegacao:hover {
   background: rgba(255, 255, 255, 0.2);
 }
