@@ -34,3 +34,8 @@ h2,
 p {
   margin: 0;
 }
+
+:focus-visible {
+  outline: 4px dashed #c2850c;
+  outline-offset: 2px;
+}

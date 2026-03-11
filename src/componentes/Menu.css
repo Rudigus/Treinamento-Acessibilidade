@@ -70,11 +70,6 @@
   font-weight: 700;
 }
 
-.menu__botao-contraste:focus-visible {
-  outline: 3px solid var(--cor-foco);
-  outline-offset: 2px;
-}
-
 .menu__botao-navegacao {
   width: 100%;
   padding: 0.85rem 1rem;
@@ -96,11 +91,6 @@
 
 .menu__botao-navegacao:hover {
   background: var(--cor-menu-botao-hover);
-}
-
-.menu__botao-navegacao:focus-visible {
-  outline: 3px solid var(--cor-foco);
-  outline-offset: 2px;
 }
 
 .menu__botao-navegacao.esta-ativo {
