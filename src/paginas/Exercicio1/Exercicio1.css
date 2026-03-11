@@ -1,8 +1,8 @@
 .pagina-exercicio-1 {
-    max-width: 840px;
+    max-width: 980px;
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
+    gap: 1rem;
     color: #333333;
 }
 
@@ -16,6 +16,79 @@
     color: inherit;
 }
 
+.pagina-exercicio-1 .painel-crud {
+    width: 100%;
+}
+
+.pagina-exercicio-1 .titulo-secao {
+    margin: 0 0 0.6rem;
+    font-size: 1rem;
+}
+
+.pagina-exercicio-1 .lista-registros {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.pagina-exercicio-1 .card-registro {
+    border: 1px solid #bcc5d3;
+    border-radius: 10px;
+    padding: 1.1rem;
+    min-height: 160px;
+    width: 100%;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.pagina-exercicio-1 .card-registro p {
+    line-height: 1.5;
+}
+
+.pagina-exercicio-1 .card-registro__nome {
+    margin: 0 0 0.2rem;
+    font-size: 1.05rem;
+}
+
+.pagina-exercicio-1 .botao-detalhar {
+    margin-top: auto;
+    align-self: flex-end;
+    padding: 0.55rem 0.8rem;
+    border: 1px solid #bcc5d3;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+}
+
+.pagina-exercicio-1 .card-registro.esta-selecionado {
+    border-color: #1351b4;
+}
+
+.pagina-exercicio-1 .card-registro.esta-selecionado .botao-detalhar {
+    border-color: #1351b4;
+    font-weight: 700;
+}
+
 body[data-theme='dark'] .pagina-exercicio-1 {
     color: #e7edf6;
+}
+
+body[data-theme='dark'] .pagina-exercicio-1 .card-registro,
+body[data-theme='dark'] .pagina-exercicio-1 .botao-detalhar {
+    border-color: #7d8591;
+}
+
+body[data-theme='dark'] .pagina-exercicio-1 .card-registro {
+    background: #000000;
+}
+
+body[data-theme='dark'] .pagina-exercicio-1 .card-registro.esta-selecionado,
+body[data-theme='dark'] .pagina-exercicio-1 .card-registro.esta-selecionado .botao-detalhar {
+    border-color: #fff333;
 }
