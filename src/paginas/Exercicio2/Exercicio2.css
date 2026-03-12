@@ -1,8 +1,9 @@
 .pagina-exercicio-2 {
-  max-width: 840px;
+  width: 100%;
+  max-width: none;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 1rem;
   color: #333333;
 }
 
@@ -16,6 +17,116 @@
   color: inherit;
 }
 
+.pagina-exercicio-2 .painel-navegacao-erro {
+  display: grid;
+  grid-template-columns: minmax(220px, 280px) 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.pagina-exercicio-2 .menu-lateral-erro {
+  border: 1px solid #bcc5d3;
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 1rem;
+}
+
+.pagina-exercicio-2 .menu-lateral-erro h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.pagina-exercicio-2 .menu-lateral-erro__lista {
+  margin: 0.85rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.pagina-exercicio-2 .menu-lateral-erro__botao {
+  width: 100%;
+  min-height: 42px;
+  border-radius: 8px;
+  border: 1px solid #c3cada;
+  background: #f4f7fb;
+  color: #222222;
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.pagina-exercicio-2 .menu-lateral-erro__botao-dropdown {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.pagina-exercicio-2 .menu-lateral-erro__botao.esta-ativo {
+  border-color: #1351b4;
+  font-weight: 700;
+}
+
+.pagina-exercicio-2 .menu-lateral-erro__sublista {
+  margin: 0.45rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.pagina-exercicio-2 .menu-lateral-erro__botao-item {
+  min-height: 38px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  padding-left: 1.1rem;
+}
+
+.pagina-exercicio-2 .conteudo-secao {
+  border: 1px solid #bcc5d3;
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 1.1rem;
+  min-height: 290px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pagina-exercicio-2 .conteudo-secao h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.pagina-exercicio-2 .conteudo-secao p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .pagina-exercicio-2 .painel-navegacao-erro {
+    grid-template-columns: 1fr;
+  }
+}
+
 body[data-theme='dark'] .pagina-exercicio-2 {
   color: #e7edf6;
+}
+
+body[data-theme='dark'] .pagina-exercicio-2 .menu-lateral-erro,
+body[data-theme='dark'] .pagina-exercicio-2 .conteudo-secao {
+  background: #000000;
+  border-color: #7d8591;
+}
+
+body[data-theme='dark'] .pagina-exercicio-2 .menu-lateral-erro__botao {
+  background: #000000;
+  border-color: #7d8591;
+  color: #fff333;
+}
+
+body[data-theme='dark'] .pagina-exercicio-2 .menu-lateral-erro__botao.esta-ativo {
+  border-color: #fff333;
 }
