@@ -1,0 +1,153 @@
+SKILLS TECNICAS DO PROJETO - TREINAMENTO DE ACESSIBILIDADE DATAPREV
+
+OBJETIVO DO REPOSITORIO
+- Repositorio de treinamento para exercicios de acessibilidade.
+- Varias telas contem erros intencionais para que alunos auditem e corrijam no codigo.
+- Nem todo problema de acessibilidade deve ser corrigido durante a construcao da base.
+
+STACK E DEPENDENCIAS
+- Build: Vite.
+- UI: React 19.
+- Roteamento: react-router-dom.
+- Icones: Font Awesome free v5.
+- Arquivo de referencia: package.json.
+
+ENTRYPOINTS E FLUXO DE INICIALIZACAO
+- src/main.jsx:
+  - importa estilos globais e variaveis.
+  - envolve App com BrowserRouter e ThemeProvider.
+- src/App.jsx:
+  - define PAGINAS_TREINAMENTO com caminho/titulo/componente.
+  - usa layout com Menu + main (Outlet).
+  - rota inicial e a home em "/".
+  - wildcard redireciona para "/".
+
+MAPA DE ROTAS ATUAL
+- / -> Inicio
+- /exercicio-1 -> Exercicio1
+- /exercicio-2 -> Exercicio2
+- /exercicio-3 -> Exercicio3
+- /exercicio-4 -> Exercicio4
+
+LAYOUT E RESPONSIVIDADE
+- src/App.css:
+  - desktop: grid com 2 colunas (menu 280px + conteudo).
+  - mobile <= 900px: 1 coluna.
+- Menu responsivo:
+  - orquestrador: src/componentes/Menu.jsx
+  - desktop: src/componentes/menu/MenuDesktop.jsx
+  - mobile: src/componentes/menu/MenuMobile.jsx
+  - conteudo compartilhado: src/componentes/menu/MenuCommonContent.jsx
+  - estilos: src/componentes/Menu.css
+
+HOOKS E ESTADO GLOBAL
+- Tema global:
+  - contexto em src/contextos/ThemeContext.jsx
+  - chave localStorage: "tema-aplicacao"
+  - tema aplicado no body via data-theme.
+  - valores aceitos: light, dark.
+- Detecao de mobile:
+  - src/utils/useIsMobile.js
+  - assinatura: useIsMobile(breakpoint = 900)
+  - atualiza estado por listener de resize.
+
+REGRAS VISUAIS GLOBAIS
+- Fonte base: Rawline.
+- line-height global: 1.5.
+- foco global: outline 4px dashed #c2850c.
+- cores base em src/temas/variaveis.css:
+  - fundo dark da pagina: #333333.
+  - fundo dark do menu: #1b1b1b.
+  - cor de destaque clicavel no dark: #fff333.
+- Regra de texto/cor por exercicio:
+  - ajustes de cor de conteudo devem ficar preferencialmente em cada CSS de exercicio.
+
+MENU - COMPORTAMENTO DEFINIDO
+- Desktop:
+  - menu lateral sticky com altura total.
+  - navegacao por NavLink com estado ativo.
+- Mobile:
+  - topbar sticky com titulo + botao hamburguer (fa-bars).
+  - botao com aria-expanded e aria-controls.
+  - abre dropdown abaixo da barra.
+  - dropdown NAO fecha automaticamente ao navegar (decisao tomada).
+- Conteudos no menu (desktop e mobile):
+  - Contraste de Cor: Alto/Baixo (funcional via ThemeContext).
+  - Tamanho de Fonte: Pequena/Media/Grande (apenas visual por enquanto, sem logica).
+
+PAGINA INICIO
+- Titulo oficial:
+  - "Treinamento de Acessibilidade Dataprev"
+- Texto em 3 blocos com espacamento visual de 16px.
+- Secao "Links de ajuda" com:
+  - Font Awesome v5 Search
+  - Guia WCAG
+  - DS Gov
+  - IBM Equal Access Accessibility Checker
+- Cor de links:
+  - light: #1351b4
+  - dark: #fff333
+
+EXERCICIO 1 - STATUS TECNICO
+- Arquivos:
+  - src/paginas/Exercicio1/Exercicio1.jsx
+  - src/paginas/Exercicio1/Exercicio1.css
+  - src/paginas/Exercicio1/mock/registrosMock.js
+  - src/paginas/Exercicio1/AJUSTES_EXERCICIO_1.txt
+- Contexto funcional:
+  - lista de 4 itens de download mockados.
+  - botao DSGov "Voltar" com navigate("/").
+- Erros intencionais relevantes em Exercicio 1:
+  - controle de download implementado com div role="button" (nao botao nativo).
+  - id repetido "card-registro" em multiplos cards.
+  - contraste fraco em texto secundario.
+  - titulo de secao e estilo com escolhas propositalmente inadequadas para treinamento.
+
+EXERCICIO 2 - STATUS TECNICO
+- Arquivos:
+  - src/paginas/Exercicio2/Exercicio2.jsx
+  - src/paginas/Exercicio2/Exercicio2.css
+- Contexto funcional:
+  - painel com menu lateral + conteudo.
+  - secoes com dropdown e subitens.
+  - clique em subitem atualiza conteudo.
+- Erros intencionais relevantes em Exercicio 2:
+  - menu de navegacao feito com botoes em vez de estrutura semantica de navegacao adequada.
+  - botoes expansivos de dropdown sem aria-expanded (alvo do exercicio).
+  - estrutura ainda precisa ser convertida para nav + links no desafio do aluno.
+
+EXERCICIOS 3 E 4
+- Atualmente placeholders com titulo/subtitulo e CSS basico.
+- Ainda sem cenarios detalhados de erro de acessibilidade.
+
+COMPONENTE DSGOV
+- Local:
+  - src/dsgov/BrButton.jsx
+  - src/dsgov/button.css
+- Uso atual:
+  - botao "Voltar" no Exercicio 1.
+- Estilo principal com cor primaria #1351b4 em light e dark.
+
+PADROES PARA CONTINUIDADE
+- Manter naming e estrutura por pasta de pagina:
+  - cada exercicio com JSX + CSS proprios.
+- Quando criar novo exercicio:
+  - adicionar rota em PAGINAS_TREINAMENTO no App.jsx
+  - adicionar item automaticamente no menu via lista de paginas.
+- Para erros pedagogicos:
+  - registrar checklist em arquivo txt dentro da pasta do exercicio.
+
+LIMITACOES DO AMBIENTE
+- Build/lint nao executam neste ambiente atual por limitacao de WSL 1.
+- Erro recorrente:
+  - "WSL 1 is not supported. Please upgrade to WSL 2 or above."
+  - "Could not determine Node.js install directory"
+
+OBSERVACOES DE HANDOFF PARA OUTRO AGENTE
+- A base ja esta pronta para continuar criando conteudo dos exercicios 3 e 4.
+- Decisoes importantes ja fechadas:
+  - tema dark da pagina = #333333.
+  - menu dark = #1b1b1b.
+  - clicaveis no dark = texto #fff333.
+  - foco global = 4px dashed #c2850c.
+  - breakpoint mobile = 900px.
