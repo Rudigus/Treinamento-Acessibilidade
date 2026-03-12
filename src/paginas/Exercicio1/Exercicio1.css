@@ -78,8 +78,6 @@
     margin-top: auto;
     align-self: flex-end;
     padding: 0.55rem 0.8rem;
-    border: 1px solid #bcc5d3;
-    border-radius: 8px;
     font-size: 0.95rem;
     background: transparent;
     color: inherit;
@@ -91,14 +89,6 @@
     min-height: 38px;
 }
 
-.pagina-exercicio-1 .card-registro.esta-selecionado {
-    border-color: #1351b4;
-}
-
-.pagina-exercicio-1 .card-registro.esta-selecionado .botao-detalhar {
-    border-color: #1351b4;
-    font-weight: 700;
-}
 
 .pagina-exercicio-1 .acoes-finais {
     display: flex;
@@ -121,9 +111,4 @@ body[data-theme='dark'] .pagina-exercicio-1 .card-registro {
 
 body[data-theme='dark'] .pagina-exercicio-1 .card-registro .texto-secundario {
     color: #626874;
-}
-
-body[data-theme='dark'] .pagina-exercicio-1 .card-registro.esta-selecionado,
-body[data-theme='dark'] .pagina-exercicio-1 .card-registro.esta-selecionado .botao-detalhar {
-    border-color: #fff333;
 }
