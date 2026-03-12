@@ -1,0 +1,34 @@
+.dtp-input label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+body[data-theme='dark'] .dtp-input label,
+body[data-theme='dark'] .dtp-input input,
+body[data-theme='dark'] .dtp-input .input-icon {
+  color: #ffffff;
+}
+
+body[data-theme='dark'] .dtp-input input::placeholder {
+  color: #ffffff;
+  opacity: 0.8;
+}
+
+.custom-asterisk {
+  color: #333;
+  font-size: 0.6em !important;
+  vertical-align: super;
+}
+
+[data-theme="dark"] .custom-asterisk {
+  color: #fff !important;
+}
+
+i{
+    text-align: center;
+    width: 24px;
+}
+
+.input-label label{
+    font-family: 600;
+}
