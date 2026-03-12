@@ -53,7 +53,7 @@
   height: var(--button-size);
   justify-content: center;
   overflow: hidden;
-  padding: 0 var(--spacing-scale-3x);
+  padding: 0 24px;
   position: relative;
   text-align: center;
   vertical-align: middle;

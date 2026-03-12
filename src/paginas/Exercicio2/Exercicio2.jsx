@@ -1,25 +1,18 @@
 import { useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import BrButton from '../../dsgov/BrButton.jsx'
 import './Exercicio2.css'
 
 function Exercicio2() {
+  const navigate = useNavigate()
+
   const secoes = useMemo(() => {
     return [
       {
         id: 'dados-pessoais',
         titulo: 'Dados pessoais',
-        itens: [
-          {
-            id: 'identificacao',
-            titulo: 'Identificação',
-            descricao:
-              'Área com informações básicas do cidadão, incluindo nome social, documento e dados de contato.',
-          },
-          {
-            id: 'situacao-cadastral',
-            titulo: 'Situação cadastral',
-            descricao: 'Área para consulta da situação atual do cadastro e histórico de atualizações.',
-          },
-        ],
+        descricao:
+          'Área com informações básicas do cidadão, incluindo nome social, documento e dados de contato.',
       },
       {
         id: 'endereco',
@@ -41,20 +34,8 @@ function Exercicio2() {
       {
         id: 'contatos',
         titulo: 'Contatos',
-        itens: [
-          {
-            id: 'telefones',
-            titulo: 'Telefones',
-            descricao:
-              'Área com telefones e regras de contato para notificações do serviço.',
-          },
-          {
-            id: 'emails',
-            titulo: 'E-mails',
-            descricao:
-              'Área com e-mails principais e alternativos usados para autenticação e comunicação.',
-          },
-        ],
+        descricao:
+          'Área com telefones e e-mails usados para notificações do serviço, autenticação e comunicação.',
       },
       {
         id: 'documentos',
@@ -77,15 +58,36 @@ function Exercicio2() {
     ]
   }, [])
 
-  const [dropdownAberto, setDropdownAberto] = useState(secoes[0].id)
-  const [itemAtivo, setItemAtivo] = useState(secoes[0].itens[0].id)
+  const primeiroDropdown =
+    secoes.find((secao) => Array.isArray(secao.itens) && secao.itens.length > 0)?.id ?? ''
+
+  const itensNavegaveis = secoes.flatMap((secao) => {
+    if (Array.isArray(secao.itens) && secao.itens.length > 0) {
+      return secao.itens
+    }
+
+    return [
+      {
+        id: secao.id,
+        titulo: secao.titulo,
+        descricao: secao.descricao,
+      },
+    ]
+  })
+
+  const [dropdownAberto, setDropdownAberto] = useState(primeiroDropdown)
+  const [itemAtivo, setItemAtivo] = useState(itensNavegaveis[0]?.id ?? '')
 
   const alternarDropdown = (secaoId) => {
     setDropdownAberto((atual) => (atual === secaoId ? '' : secaoId))
   }
 
   const dadosItemAtivo =
-    secoes.flatMap((secao) => secao.itens).find((item) => item.id === itemAtivo) ?? secoes[0].itens[0]
+    itensNavegaveis.find((item) => item.id === itemAtivo) ?? itensNavegaveis[0]
+
+  const voltarParaInicio = () => {
+    navigate('/')
+  }
 
   return (
     <section className="pagina-exercicio-2" aria-labelledby="titulo-exercicio-2">
@@ -102,7 +104,24 @@ function Exercicio2() {
 
           <ul className="menu-lateral-erro__lista">
             {secoes.map((secao) => {
+              const temSubitens = Array.isArray(secao.itens) && secao.itens.length > 0
               const estaAberto = secao.id === dropdownAberto
+
+              if (!temSubitens) {
+                const itemEstaAtivo = secao.id === itemAtivo
+
+                return (
+                  <li key={secao.id}>
+                    <button
+                      type="button"
+                      className={`menu-lateral-erro__botao${itemEstaAtivo ? ' esta-ativo' : ''}`}
+                      onClick={() => setItemAtivo(secao.id)}
+                    >
+                      <span>{secao.titulo}</span>
+                    </button>
+                  </li>
+                )
+              }
 
               return (
                 <li key={secao.id}>
@@ -114,7 +133,10 @@ function Exercicio2() {
                     onClick={() => alternarDropdown(secao.id)}
                   >
                     <span>{secao.titulo}</span>
-                    <i className="fas fa-chevron-down" aria-hidden="true" />
+                    <i
+                      className={`fas ${estaAberto ? 'fa-chevron-up' : 'fa-chevron-down'}`}
+                      aria-hidden="true"
+                    />
                   </button>
 
                   {estaAberto && (
@@ -152,6 +174,12 @@ function Exercicio2() {
             adequada, com landmarks e links, além de estados corretos para botões expansíveis.
           </p>
         </article>
+      </div>
+
+      <div className="acoes-finais">
+        <BrButton className="primary large" onClick={voltarParaInicio}>
+          Voltar
+        </BrButton>
       </div>
     </section>
   )
