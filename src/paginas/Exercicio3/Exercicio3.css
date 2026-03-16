@@ -1,8 +1,9 @@
 .pagina-exercicio-3 {
-  max-width: 100%;
+  width: 100%;
+  max-width: none;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 1rem;
   color: #333333;
 }
 
@@ -16,6 +17,56 @@
   color: inherit;
 }
 
+.pagina-exercicio-3 .painel-cadastro {
+  margin-top: 0.2rem;
+  border: 1px solid #bcc5d3;
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pagina-exercicio-3 .painel-cadastro h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.pagina-exercicio-3 .painel-cadastro p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.pagina-exercicio-3 .formulario-cadastro {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 0.95rem;
+}
+
+.pagina-exercicio-3 .formulario-cadastro__campo {
+  min-width: 0;
+}
+
+.pagina-exercicio-3 .formulario-cadastro .formulario-cadastro__campo-completo {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 900px) {
+  .pagina-exercicio-3 .formulario-cadastro {
+    grid-template-columns: 1fr;
+  }
+
+  .pagina-exercicio-3 .formulario-cadastro .formulario-cadastro__campo-completo {
+    grid-column: auto;
+  }
+}
+
 body[data-theme='dark'] .pagina-exercicio-3 {
   color: #e7edf6;
+}
+
+body[data-theme='dark'] .pagina-exercicio-3 .painel-cadastro {
+  background: #000000;
+  border-color: #7d8591;
 }

@@ -1,12 +1,15 @@
-import "./Exercicio3.css";
 import { useState } from "react";
-import { DTPInput, DTPFeedbackType } from "../../componentes/ds";
+import { DTPFeedbackType, DTPInput } from "../../componentes/ds";
+import "./Exercicio3.css";
 
 function Exercicio3() {
-  const [nome, setNome] = useState("");
-  const [cpf, setCpf] = useState("");
+  const [nomeCompleto, setNomeCompleto] = useState("");
   const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [idade, setIdade] = useState("");
   const [telefone, setTelefone] = useState("");
+  const [cep, setCep] = useState("");
+  const [numero, setNumero] = useState("");
 
   return (
     <section
@@ -14,80 +17,116 @@ function Exercicio3() {
       aria-labelledby="titulo-exercicio-3"
     >
       <h2 id="titulo-exercicio-3">Formulario de atualizacao de cadastro</h2>
-
       <span className="subtitulo-pagina">
         Esta tela simula um formulario com campos de entrada e selecao para
         revisar informacoes cadastrais e praticar ajustes de acessibilidade.
       </span>
 
-      <div
-        style={{
-          backgroundColor: "#f5f5f5",
-          padding: "15px 20px",
-          borderBottom: "1px solid #e0e0e0",
-          color: "#2162adff",
-          fontSize: "16px",
-          textAlign: "center",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          minHeight: "50px",
-          width: "100%",
-          marginTop: "20px",
-        }}
+      <section
+        className="painel-cadastro"
+        aria-labelledby="titulo-painel-cadastro"
       >
-        <span style={{ fontWeight: "bold" }}>Alterar cadastro</span>
-      </div>
+        <h3 id="titulo-painel-cadastro">Alterar dados de cadastro</h3>
+        <p>Preencha os campos abaixo para atualizar as informacoes.</p>
 
-      <div style={{ marginTop: "30px", maxWidth: "500px" }}>
-        <DTPInput
-          id="nome"
-          name="nome"
-          label="Nome completo"
-          placeholder="Digite seu nome"
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
-          required
-        />
+        <div className="formulario-cadastro">
+          <div className="formulario-cadastro__campo formulario-cadastro__campo-completo">
+            <DTPInput
+              id="nome-completo"
+              name="nomeCompleto"
+              label="Nome completo"
+              placeholder="Digite seu nome completo"
+              value={nomeCompleto}
+              onChange={(event) => setNomeCompleto(event.target.value)}
+              required
+            />
+          </div>
 
-        <div style={{ height: "16px" }} />
+          <div className="formulario-cadastro__campo">
+            <DTPInput
+              id="email"
+              name="email"
+              label="E-mail"
+              type="email"
+              placeholder="seu.email@provedor.com"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              icon="fa-envelope"
+            />
+          </div>
 
-        <DTPInput
-          id="cpf"
-          name="NUMERIC"
-          label="NUMERIC"
-          placeholder="000.000.000-00"
-          value={cpf}
-          onChange={(e) => setCpf(e.target.value)}
-          icon="fa-id-card"
-          inputMode="numeric"
-        />
+          <div className="formulario-cadastro__campo">
+            <DTPInput
+              id="senha"
+              name="senha"
+              label="Senha"
+              type="password"
+              placeholder="Digite sua senha"
+              value={senha}
+              onChange={(event) => setSenha(event.target.value)}
+              icon="fa-lock"
+            />
+          </div>
 
-        <div style={{ height: "16px" }} />
+          <div className="formulario-cadastro__campo">
+            <DTPInput
+              id="idade"
+              name="idade"
+              label="Idade"
+              type="number"
+              placeholder="00"
+              value={idade}
+              onChange={(event) => setIdade(event.target.value)}
+              inputMode="numeric"
+              min={0}
+              max={120}
+            />
+          </div>
 
-        <DTPInput
-          id="email"
-          name="email"
-          label="Email"
-          placeholder="seu@email.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          icon="fa-envelope"
-          maxLength={4}
-          type="text"
-        />
+          <div className="formulario-cadastro__campo">
+            <DTPInput
+              id="telefone"
+              name="telefone"
+              label="Telefone"
+              type="tel"
+              placeholder="(00) 00000-0000"
+              value={telefone}
+              onChange={(event) => setTelefone(event.target.value)}
+              isInvalid={telefone.length > 0 && telefone.length < 14}
+              feedbackMessage="Informe um número de celular válido."
+              icon="fa-phone"
+            />
+          </div>
 
-        <div style={{ height: "16px" }} />
+          <div className="formulario-cadastro__campo">
+            <DTPInput
+              id="cep"
+              name="cep"
+              label="CEP"
+              placeholder="00000-000"
+              value={cep}
+              onChange={(event) => setCep(event.target.value)}
+              inputMode="numeric"
+              feedback={DTPFeedbackType.INFO}
+              feedbackMessage="Use o formato 00000-000."
+            />
+          </div>
 
-        <DTPInput
-          id="teste"
-          label="Teste"
-          type="password"
-          placeholder="teste"
-        />
-
-        <DTPInput id="teste" label="Teste" required placeholder="teste" />
-      </div>
+          <div className="formulario-cadastro__campo">
+            <DTPInput
+              id="numero"
+              name="numero"
+              label="Numero"
+              type="number"
+              placeholder="123"
+              value={numero}
+              onChange={(event) => setNumero(event.target.value)}
+              inputMode="numeric"
+              min={0}
+            />
+          </div>
+        </div>
+      </section>
     </section>
   );
 }
