@@ -1,0 +1,12 @@
+body[data-theme='dark'] .br-button.primary {
+  background-color: #fff333;
+  color: #333;
+  --interactive-rgb: 51, 51, 51;
+}
+
+body[data-theme='dark'] .br-button.secondary {
+  background-color: transparent;
+  border-color: #fff333;
+  color: #fff333;
+  --interactive-rgb: 255, 243, 51;
+}

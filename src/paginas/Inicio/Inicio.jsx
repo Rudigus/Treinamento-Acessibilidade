@@ -49,6 +49,15 @@ function Inicio() {
           </li>
           <li>
             <a
+              href="https://www.gov.br/ds/fundamentos-visuais/iconografia?tab=visao-geral"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              Iconografia DS Gov
+            </a>
+          </li>
+          <li>
+            <a
               href="https://chromewebstore.google.com/detail/ibm-equal-access-accessib/lkcagbfjnkomcinoddgooolagloogehp?hl=pt&pli=1"
               target="_blank"
               rel="noreferrer noopener"
@@ -56,6 +65,7 @@ function Inicio() {
               IBM Equal Access Accessibility Checker
             </a>
           </li>
+
         </ul>
       </section>
     </section>

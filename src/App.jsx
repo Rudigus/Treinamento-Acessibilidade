@@ -12,7 +12,6 @@ const PAGINAS_TREINAMENTO = [
   { caminho: '/exercicio-1', titulo: 'Exercicio 1', componente: Exercicio1 },
   { caminho: '/exercicio-2', titulo: 'Exercicio 2', componente: Exercicio2 },
   { caminho: '/exercicio-3', titulo: 'Exercicio 3', componente: Exercicio3 },
-  { caminho: '/exercicio-4', titulo: 'Exercicio 4', componente: Exercicio4 },
 ]
 
 function LayoutAplicacao() {

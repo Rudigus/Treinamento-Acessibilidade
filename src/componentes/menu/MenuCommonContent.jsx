@@ -37,33 +37,6 @@ function MenuCommonContent({ paginas, theme, setTheme }) {
         </div>
       </div>
 
-      <div
-        className="menu__controle-fonte"
-        role="group"
-        aria-label="Controle de tamanho da fonte"
-      >
-        <p className="menu__titulo-fonte">
-          <i className="fas fa-font" aria-hidden="true" />
-          <span>Tamanho de Fonte</span>
-        </p>
-
-        <div className="menu__opcoes-fonte">
-          <button type="button" className="menu__botao-fonte" aria-pressed="false">
-            Pequena
-          </button>
-          <button
-            type="button"
-            className="menu__botao-fonte esta-selecionado"
-            aria-pressed="true"
-          >
-            Média
-          </button>
-          <button type="button" className="menu__botao-fonte" aria-pressed="false">
-            Grande
-          </button>
-        </div>
-      </div>
-
       <nav aria-label="Menu de navegacao principal">
         <ul className="menu__lista">
           {paginas.map((pagina) => {

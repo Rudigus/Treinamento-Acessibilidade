@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { DTPFeedbackType, DTPInput } from "../../componentes/ds";
 import "./Exercicio3.css";
+import "./dadosTitular.css";
+import BrButton from "../../dsgov/BrButton";
 
 function Exercicio3() {
-  const [nomeCompleto, setNomeCompleto] = useState("");
+  const [enderecoCompleto, setEnderecoCompleto] = useState("");
   const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
-  const [idade, setIdade] = useState("");
-  const [telefone, setTelefone] = useState("");
-  const [cep, setCep] = useState("");
-  const [numero, setNumero] = useState("");
+  const [celular, setCelular] = useState("");
 
+
+  const voltarParaInicio = () => {
+    navigate('/')
+  }
   return (
     <section
       className="pagina-exercicio-3"
@@ -21,24 +23,54 @@ function Exercicio3() {
         Esta tela simula um formulario com campos de entrada e selecao para
         revisar informacoes cadastrais e praticar ajustes de acessibilidade.
       </span>
-
+      <div
+        style={{
+          backgroundColor: "#f5f5f5",
+          padding: "15px 20px",
+          borderBottom: "1px solid #e0e0e0",
+          color: "#2162adff",
+          fontSize: "16px",
+          textAlign: "center",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "50px",
+          width: "100%",
+        }}
+      >
+        <span style={{ fontWeight: "bold" }}>Alterar cadastro</span>
+      </div>
       <section
         className="painel-cadastro"
         aria-labelledby="titulo-painel-cadastro"
       >
-        <h3 id="titulo-painel-cadastro">Alterar dados de cadastro</h3>
-        <p>Preencha os campos abaixo para atualizar as informacoes.</p>
+        <h3 className="sag-va-titulo-linha">Informações do Titular</h3>
+        <div className="sag-va-campos">
+          <div className="sag-va-campo">
+            <label>cpf: </label>
+            <span>380.124.997-20</span>
+          </div>
+          <div className="sag-va-campo">
+            <label>Nome: </label>
+            <span>ADILSON GOMES DA ROCHA</span>
+          </div>
+          <div className="sag-va-campo">
+            <label>Data nascimento: </label>
+            <span>01/01/1990</span>
+          </div>
+        </div>
+        <h3 className="sag-va-titulo-linha">Informações de Contato</h3>
 
         <div className="formulario-cadastro">
+
           <div className="formulario-cadastro__campo formulario-cadastro__campo-completo">
             <DTPInput
-              id="nome-completo"
-              name="nomeCompleto"
-              label="Nome completo"
-              placeholder="Digite seu nome completo"
-              value={nomeCompleto}
-              onChange={(event) => setNomeCompleto(event.target.value)}
-              required
+              id="endereco-completo"
+              name="enderecoCompleto"
+              label="Endereço"
+              placeholder="Informe seu endereço"
+              value={enderecoCompleto}
+              onChange={(event) => setEnderecoCompleto(event.target.value)}
             />
           </div>
 
@@ -48,83 +80,34 @@ function Exercicio3() {
               name="email"
               label="E-mail"
               type="email"
-              placeholder="seu.email@provedor.com"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
-              icon="fa-envelope"
+              isInvalid={email.length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)}
             />
           </div>
-
           <div className="formulario-cadastro__campo">
             <DTPInput
-              id="senha"
-              name="senha"
-              label="Senha"
-              type="password"
-              placeholder="Digite sua senha"
-              value={senha}
-              onChange={(event) => setSenha(event.target.value)}
-              icon="fa-lock"
-            />
-          </div>
-
-          <div className="formulario-cadastro__campo">
-            <DTPInput
-              id="idade"
-              name="idade"
-              label="Idade"
-              type="number"
-              placeholder="00"
-              value={idade}
-              onChange={(event) => setIdade(event.target.value)}
-              inputMode="numeric"
-              min={0}
-              max={120}
-            />
-          </div>
-
-          <div className="formulario-cadastro__campo">
-            <DTPInput
-              id="telefone"
-              name="telefone"
-              label="Telefone"
+              id="celular"
+              name="celular"
+              label="Celular (Opcional)"
               type="tel"
               placeholder="(00) 00000-0000"
-              value={telefone}
-              onChange={(event) => setTelefone(event.target.value)}
-              isInvalid={telefone.length > 0 && telefone.length < 14}
+              value={celular}
+              onChange={(event) => setCelular(event.target.value)}
+              isInvalid={celular.length > 0 && celular.length < 14}
               feedbackMessage="Informe um número de celular válido."
-              icon="fa-phone"
+              icon="fa-mobile-alt"
             />
           </div>
+        </div>
 
-          <div className="formulario-cadastro__campo">
-            <DTPInput
-              id="cep"
-              name="cep"
-              label="CEP"
-              placeholder="00000-000"
-              value={cep}
-              onChange={(event) => setCep(event.target.value)}
-              inputMode="numeric"
-              feedback={DTPFeedbackType.INFO}
-              feedbackMessage="Use o formato 00000-000."
-            />
-          </div>
-
-          <div className="formulario-cadastro__campo">
-            <DTPInput
-              id="numero"
-              name="numero"
-              label="Numero"
-              type="number"
-              placeholder="123"
-              value={numero}
-              onChange={(event) => setNumero(event.target.value)}
-              inputMode="numeric"
-              min={0}
-            />
-          </div>
+        <div className="acoes-finais">
+          <BrButton className="secondary large" onClick={voltarParaInicio}>
+            Voltar
+          </BrButton>
+          <BrButton className="primary large" onClick={voltarParaInicio}>
+            Avançar
+          </BrButton>
         </div>
       </section>
     </section>

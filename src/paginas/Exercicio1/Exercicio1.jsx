@@ -20,10 +20,6 @@ function Exercicio1() {
       </span>
 
       <div className="painel-crud">
-        <div className="filtros-rapidos">
-          <input type="text" placeholder="Buscar por nome, tipo ou formato" />
-        </div>
-
         <section aria-label="Lista de itens para download">
           <h4 className="titulo-secao">Itens disponíveis</h4>
           <ul className="lista-registros">
@@ -49,7 +45,7 @@ function Exercicio1() {
                       aria-pressed={estaSelecionado}
                       onClick={() => setIdSelecionado(item.id)}
                     >
-                      <i className="fas fa-download" aria-hidden="true" />
+                      <i className="fas fa-cloud-download-alt" />
                     </div>
                   </article>
                 </li>
