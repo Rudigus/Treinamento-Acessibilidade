@@ -54,11 +54,6 @@ function Exercicio2() {
         setItemAtivo(itemId)
     }
 
-    const selecionarSecaoPorLink = (event, secaoId) => {
-        event.preventDefault()
-        selecionarItem(secaoId)
-    }
-
     const dadosItemAtivo =
         itensNavegaveis.find((item) => item.id === itemAtivo) ?? itensNavegaveis[0]
 
@@ -66,18 +61,20 @@ function Exercicio2() {
         navigate('/')
     }
 
-    const renderLinkSecao = (secao) => {
+    // tarefa
+    const renderItemSemSubmenu = (secao) => {
         return (
-            <a
-                href="#"
+            <button
+                type="button"
                 className="menu-lateral-erro__botao"
-                onClick={(event) => selecionarSecaoPorLink(event, secao.id)}
+                onClick={() => selecionarItem(secao.id)}
             >
                 <span>{secao.titulo}</span>
-            </a>
+            </button>
         )
     }
 
+    // tarefa
     const renderBotaoDropdown = (secao, estaAberto) => {
         return (
             <button
@@ -85,7 +82,6 @@ function Exercicio2() {
                 className={`menu-lateral-erro__botao menu-lateral-erro__botao-dropdown${estaAberto ? ' esta-ativo' : ''
                     }`}
                 onClick={() => alternarDropdown(secao.id)}
-                aria-expanded={estaAberto}
                 aria-controls={`sublista-${secao.id}`}
             >
                 <span>{secao.titulo}</span>
@@ -102,6 +98,22 @@ function Exercicio2() {
             return null
         }
 
+        // tarefa
+        const renderItemSubmenu = (item, indiceSubitem) => {
+            return (
+                <a
+                    href='#'
+                    className="menu-lateral-erro__botao menu-lateral-erro__botao-item"
+                    onClick={() => selecionarItem(item.id)}
+                    ref={indiceSubitem === 0 ? (elemento) => {
+                        primeiroSubitemRef.current[secao.id] = elemento
+                    } : null}
+                >
+                    {item.titulo}
+                </a>
+            )
+        }
+
         return (
             <ul
                 id={`sublista-${secao.id}`}
@@ -110,16 +122,7 @@ function Exercicio2() {
             >
                 {secao.itens.map((item, indiceSubitem) => (
                     <li key={item.id}>
-                        <button
-                            type="button"
-                            className="menu-lateral-erro__botao menu-lateral-erro__botao-item"
-                            onClick={() => selecionarItem(item.id)}
-                            ref={indiceSubitem === 0 ? (elemento) => {
-                                primeiroSubitemRef.current[secao.id] = elemento
-                            } : null}
-                        >
-                            {item.titulo}
-                        </button>
+                        {renderItemSubmenu(item, indiceSubitem)}
                     </li>
                 ))}
             </ul>
@@ -136,7 +139,8 @@ function Exercicio2() {
             </span>
 
             <div className="painel-navegacao-erro">
-                <nav className="menu-lateral-erro" aria-label="Menu lateral de seções">
+                {/* tarefa */}
+                <div className="menu-lateral-erro">
                     <h3>Seções disponíveis</h3>
 
                     <ul className="menu-lateral-erro__lista">
@@ -147,7 +151,7 @@ function Exercicio2() {
                             if (!hasSubItem) {
                                 return (
                                     <li key={secao.id}>
-                                        {renderLinkSecao(secao)}
+                                        {renderItemSemSubmenu(secao)}
                                     </li>
                                 )
                             }
@@ -160,7 +164,7 @@ function Exercicio2() {
                             )
                         })}
                     </ul>
-                </nav>
+                </div>
 
                 <article className="conteudo-secao">
                     <>
