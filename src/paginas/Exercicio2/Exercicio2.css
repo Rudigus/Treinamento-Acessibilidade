@@ -58,6 +58,7 @@
 }
 
 .pagina-exercicio-2 .menu-lateral-erro__botao {
+  display: block;
   width: 100%;
   min-height: 42px;
   border-radius: 0;
@@ -67,6 +68,7 @@
   padding: 0.75rem 1rem;
   text-align: left;
   font-size: 0.95rem;
+  text-decoration: none;
   cursor: pointer;
   position: relative;
   z-index: 0;
@@ -107,28 +109,6 @@
 
 .pagina-exercicio-2 .menu-lateral-erro__botao-item:active {
   background: #f8f8f8;
-}
-
-.pagina-exercicio-2 .menu-lateral-erro__rodape {
-  border-top: 1px solid #dfe3eb;
-  background: #ffffff;
-  margin-top: auto;
-}
-
-.pagina-exercicio-2 .menu-lateral-erro__rodape-link {
-  display: block;
-  width: 100%;
-  padding: 0.75rem 1rem;
-  color: #1351b4;
-  text-decoration: none;
-}
-
-.pagina-exercicio-2 .menu-lateral-erro__rodape-link + .menu-lateral-erro__rodape-link {
-  border-top: 1px solid #dfe3eb;
-}
-
-.pagina-exercicio-2 .menu-lateral-erro__rodape-link:hover {
-  background: #edf3ff;
 }
 
 .pagina-exercicio-2 .conteudo-secao {
@@ -176,9 +156,7 @@ body[data-theme='dark'] .pagina-exercicio-2 .conteudo-secao {
 
 body[data-theme='dark'] .pagina-exercicio-2 .menu-lateral-erro h3,
 body[data-theme='dark'] .pagina-exercicio-2 .menu-lateral-erro__lista > li,
-body[data-theme='dark'] .pagina-exercicio-2 .menu-lateral-erro__sublista,
-body[data-theme='dark'] .pagina-exercicio-2 .menu-lateral-erro__rodape,
-body[data-theme='dark'] .pagina-exercicio-2 .menu-lateral-erro__rodape-link + .menu-lateral-erro__rodape-link {
+body[data-theme='dark'] .pagina-exercicio-2 .menu-lateral-erro__sublista {
   border-color: #7d8591;
 }
 
@@ -201,16 +179,4 @@ body[data-theme='dark'] .pagina-exercicio-2 .menu-lateral-erro__botao-item:activ
 
 body[data-theme='dark'] .pagina-exercicio-2 .menu-lateral-erro__sublista {
   background: #1c1c1c;
-}
-
-body[data-theme='dark'] .pagina-exercicio-2 .menu-lateral-erro__rodape {
-  background: #000000;
-}
-
-body[data-theme='dark'] .pagina-exercicio-2 .menu-lateral-erro__rodape-link {
-  color: #fff333;
-}
-
-body[data-theme='dark'] .pagina-exercicio-2 .menu-lateral-erro__rodape-link:hover {
-  background: #2c2c2c;
 }

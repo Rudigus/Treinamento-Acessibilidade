@@ -1,62 +1,14 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import BrButton from '../../dsgov/BrButton.jsx'
 import './Exercicio2.css'
+import { SECOES_MOCK } from './mock/secoesMock.js'
 
 function Exercicio2() {
     const navigate = useNavigate()
-
-    const secoes = useMemo(() => {
-        return [
-            {
-                id: 'dados-pessoais',
-                titulo: 'Dados pessoais',
-                descricao:
-                    'Área com informações básicas do cidadão, incluindo nome social, documento e dados de contato.',
-            },
-            {
-                id: 'endereco',
-                titulo: 'Endereço',
-                itens: [
-                    {
-                        id: 'residencial',
-                        titulo: 'Residencial',
-                        descricao:
-                            'Área com os endereços cadastrados para correspondência e confirmação de localidade.',
-                    },
-                    {
-                        id: 'comercial',
-                        titulo: 'Comercial',
-                        descricao: 'Área com endereço de trabalho e referências para contato institucional.',
-                    },
-                ],
-            },
-            {
-                id: 'contatos',
-                titulo: 'Contatos',
-                descricao:
-                    'Área com telefones e e-mails usados para notificações do serviço, autenticação e comunicação.',
-            },
-            {
-                id: 'documentos',
-                titulo: 'Documentos',
-                itens: [
-                    {
-                        id: 'obrigatorios',
-                        titulo: 'Obrigatórios',
-                        descricao:
-                            'Área para consulta e atualização dos documentos obrigatórios e anexos enviados.',
-                    },
-                    {
-                        id: 'complementares',
-                        titulo: 'Complementares',
-                        descricao:
-                            'Área para anexos adicionais solicitados em fluxos específicos de atualização cadastral.',
-                    },
-                ],
-            },
-        ]
-    }, [])
+    const primeiroSubitemRef = useRef({})
+    const montouRef = useRef(false)
+    const secoes = SECOES_MOCK
 
     const primeiroDropdown =
         secoes.find((secao) => Array.isArray(secao.itens) && secao.itens.length > 0)?.id ?? ''
@@ -77,7 +29,22 @@ function Exercicio2() {
 
     const [dropdownAberto, setDropdownAberto] = useState(primeiroDropdown)
     const [itemAtivo, setItemAtivo] = useState(itensNavegaveis[0]?.id ?? '')
-    const [exibirLinkExterno, setExibirLinkExterno] = useState(false)
+
+    useEffect(() => {
+        if (!montouRef.current) {
+            montouRef.current = true
+            return
+        }
+
+        if (!dropdownAberto) {
+            return
+        }
+
+        const primeiroSubitem = primeiroSubitemRef.current[dropdownAberto]
+        if (primeiroSubitem) {
+            primeiroSubitem.focus()
+        }
+    }, [dropdownAberto])
 
     const alternarDropdown = (secaoId) => {
         setDropdownAberto((atual) => (atual === secaoId ? '' : secaoId))
@@ -85,12 +52,11 @@ function Exercicio2() {
 
     const selecionarItem = (itemId) => {
         setItemAtivo(itemId)
-        setExibirLinkExterno(false)
     }
 
-    const abrirLinkExterno = (event) => {
+    const selecionarSecaoPorLink = (event, secaoId) => {
         event.preventDefault()
-        setExibirLinkExterno(true)
+        selecionarItem(secaoId)
     }
 
     const dadosItemAtivo =
@@ -98,6 +64,66 @@ function Exercicio2() {
 
     const voltarParaInicio = () => {
         navigate('/')
+    }
+
+    const renderLinkSecao = (secao) => {
+        return (
+            <a
+                href="#"
+                className="menu-lateral-erro__botao"
+                onClick={(event) => selecionarSecaoPorLink(event, secao.id)}
+            >
+                <span>{secao.titulo}</span>
+            </a>
+        )
+    }
+
+    const renderBotaoDropdown = (secao, estaAberto) => {
+        return (
+            <button
+                type="button"
+                className={`menu-lateral-erro__botao menu-lateral-erro__botao-dropdown${estaAberto ? ' esta-ativo' : ''
+                    }`}
+                onClick={() => alternarDropdown(secao.id)}
+                aria-expanded={estaAberto}
+                aria-controls={`sublista-${secao.id}`}
+            >
+                <span>{secao.titulo}</span>
+                <i
+                    className={`fas ${estaAberto ? 'fa-chevron-up' : 'fa-chevron-down'}`}
+                    aria-hidden="true"
+                />
+            </button>
+        )
+    }
+
+    const renderSubitens = (secao, estaAberto) => {
+        if (!estaAberto) {
+            return null
+        }
+
+        return (
+            <ul
+                id={`sublista-${secao.id}`}
+                className="menu-lateral-erro__sublista"
+                aria-label={`Submenu de ${secao.titulo}`}
+            >
+                {secao.itens.map((item, indiceSubitem) => (
+                    <li key={item.id}>
+                        <button
+                            type="button"
+                            className="menu-lateral-erro__botao menu-lateral-erro__botao-item"
+                            onClick={() => selecionarItem(item.id)}
+                            ref={indiceSubitem === 0 ? (elemento) => {
+                                primeiroSubitemRef.current[secao.id] = elemento
+                            } : null}
+                        >
+                            {item.titulo}
+                        </button>
+                    </li>
+                ))}
+            </ul>
+        )
     }
 
     return (
@@ -110,92 +136,37 @@ function Exercicio2() {
             </span>
 
             <div className="painel-navegacao-erro">
-                <div className="menu-lateral-erro" aria-label="Menu lateral de seções">
+                <nav className="menu-lateral-erro" aria-label="Menu lateral de seções">
                     <h3>Seções disponíveis</h3>
 
                     <ul className="menu-lateral-erro__lista">
                         {secoes.map((secao) => {
-                            const temSubitens = Array.isArray(secao.itens) && secao.itens.length > 0
+                            const hasSubItem = Array.isArray(secao.itens) && secao.itens.length > 0
                             const estaAberto = secao.id === dropdownAberto
 
-                            if (!temSubitens) {
-                                const itemEstaAtivo = secao.id === itemAtivo
-
+                            if (!hasSubItem) {
                                 return (
                                     <li key={secao.id}>
-                                        <button
-                                            type="button"
-                                            className={`menu-lateral-erro__botao${itemEstaAtivo ? ' esta-ativo' : ''}`}
-                                            onClick={() => selecionarItem(secao.id)}
-                                        >
-                                            <span>{secao.titulo}</span>
-                                        </button>
+                                        {renderLinkSecao(secao)}
                                     </li>
                                 )
                             }
 
                             return (
                                 <li key={secao.id}>
-                                    <button
-                                        type="button"
-                                        className={`menu-lateral-erro__botao menu-lateral-erro__botao-dropdown${estaAberto ? ' esta-ativo' : ''
-                                            }`}
-                                        onClick={() => alternarDropdown(secao.id)}
-                                    >
-                                        <span>{secao.titulo}</span>
-                                        <i
-                                            className={`fas ${estaAberto ? 'fa-chevron-up' : 'fa-chevron-down'}`}
-                                            aria-hidden="true"
-                                        />
-                                    </button>
-
-                                    {estaAberto && (
-                                        <ul className="menu-lateral-erro__sublista">
-                                            {secao.itens.map((item) => {
-                                                const itemEstaAtivo = item.id === itemAtivo
-
-                                                return (
-                                                    <li key={item.id}>
-                                                        <button
-                                                            type="button"
-                                                            className={`menu-lateral-erro__botao menu-lateral-erro__botao-item${itemEstaAtivo ? ' esta-ativo' : ''
-                                                                }`}
-                                                            onClick={() => selecionarItem(item.id)}
-                                                        >
-                                                            {item.titulo}
-                                                        </button>
-                                                    </li>
-                                                )
-                                            })}
-                                        </ul>
-                                    )}
+                                    {renderBotaoDropdown(secao, estaAberto)}
+                                    {renderSubitens(secao, estaAberto)}
                                 </li>
                             )
                         })}
                     </ul>
-
-                    <div className="menu-lateral-erro__rodape">
-                        <a href="#" className="menu-lateral-erro__rodape-link" onClick={abrirLinkExterno}>
-                            Sobre
-                        </a>
-                        <a href="#" className="menu-lateral-erro__rodape-link" onClick={abrirLinkExterno}>
-                            Políticas de privacidade
-                        </a>
-                    </div>
-                </div>
+                </nav>
 
                 <article className="conteudo-secao">
-                    {exibirLinkExterno ? (
-                        <>
-                            <h3>Aviso</h3>
-                            <p>Ao avançar, você irá para uma página fora do Treinamento de Acessibilidade.</p>
-                        </>
-                    ) : (
-                        <>
-                            <h3>{dadosItemAtivo.titulo}</h3>
-                            <p>{dadosItemAtivo.descricao}</p>
-                        </>
-                    )}
+                    <>
+                        <h3>{dadosItemAtivo.titulo}</h3>
+                        <p>{dadosItemAtivo.descricao}</p>
+                    </>
                 </article>
             </div>
 

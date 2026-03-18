@@ -49,6 +49,13 @@ function Exercicio1() {
                     <p className="texto-secundario">
                       <strong>Formato:</strong> {item.formato} ({item.tamanho})
                     </p>
+                    {/*
+                        onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        handleDetalhar(item);
+                        }
+                    }} */}
                     <div
                       role="button"
                       className="botao-detalhar"
