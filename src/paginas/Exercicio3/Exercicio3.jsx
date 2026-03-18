@@ -3,16 +3,17 @@ import { DTPFeedbackType, DTPInput } from "../../componentes/ds";
 import "./Exercicio3.css";
 import "./dadosTitular.css";
 import BrButton from "../../dsgov/BrButton";
+import { useNavigate } from "react-router-dom";
 
 function Exercicio3() {
+  const navigate = useNavigate();
   const [enderecoCompleto, setEnderecoCompleto] = useState("");
   const [email, setEmail] = useState("");
   const [celular, setCelular] = useState("");
 
-
   const voltarParaInicio = () => {
-    navigate('/')
-  }
+    navigate("/");
+  };
   return (
     <section
       className="pagina-exercicio-3"
@@ -62,7 +63,6 @@ function Exercicio3() {
         <h3 className="sag-va-titulo-linha">Informações de Contato</h3>
 
         <div className="formulario-cadastro">
-
           <div className="formulario-cadastro__campo formulario-cadastro__campo-completo">
             <DTPInput
               id="endereco-completo"
@@ -82,7 +82,9 @@ function Exercicio3() {
               type="email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
-              isInvalid={email.length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)}
+              isInvalid={
+                email.length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+              }
             />
           </div>
           <div className="formulario-cadastro__campo">
