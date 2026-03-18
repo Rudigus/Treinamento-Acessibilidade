@@ -1,9 +1,9 @@
 import "./BannerInfo.css";
 
-function BannerInfo() {
+function BannerInfo({ texto }) {
   return (
     <div className="banner-info">
-      <span className="banner-info__titulo">Alterar cadastro</span>
+      <span className="banner-info__titulo">{texto}</span>
     </div>
   );
 }
