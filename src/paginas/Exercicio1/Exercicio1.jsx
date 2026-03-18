@@ -65,6 +65,7 @@ function Exercicio1() {
       </div>
 
       <div className="acoes-finais">
+        {/* Large -> altura de 48px */}
         <BrButton className="primary medium" onClick={voltarParaInicio}>
           Voltar
         </BrButton>
