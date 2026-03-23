@@ -31,7 +31,7 @@ function Exercicio1() {
 
       <div className="painel-crud">
         <section aria-label="Lista de itens para download">
-          <h3 className="titulo-secao">Itens disponíveis</h3>
+          <h4 className="titulo-secao">Itens disponíveis</h4>
           <ul className="lista-registros">
             {ITENS_DOWNLOAD_MOCK.map((item) => {
               const estaSelecionado = item.id === idSelecionado;
@@ -44,6 +44,7 @@ function Exercicio1() {
                   >
                     <h4 className="card-registro__nome">{item.nome}</h4>
                     <p className="texto-secundario">
+                    {/*Strong pode ser problematico*/} 
                       <strong>Tipo:</strong> {item.tipo}
                     </p>
                     <p className="texto-secundario">
@@ -58,7 +59,7 @@ function Exercicio1() {
                     }} */}
                     <div
                       role="button"
-                      className="botao-detalhar"
+                      className="botao-baixar"
                       onClick={() => handleDetalhar(item)}
                     >
                       <i className="fas fa-cloud-download-alt" />
